@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Featured from '../components/featured/Featured';
 import Navbar from '../components/navbar/Navbar';
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <main>
         {/* Navbar */}
         <Navbar />
+        <Featured />
         {/* Featured Posts */}
         {/* Recent Blogs */}
       </main>

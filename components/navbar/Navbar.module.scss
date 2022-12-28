@@ -2,19 +2,19 @@
 
 .navbar {
   font-family: $primary-font;
-  border: 1px solid gray;
-  @apply flex justify-between items-center h-20 text-4xl text-emerald-800 w-3/4 m-auto;
+
+  @apply bg-black lg:bg-white flex justify-between items-center h-20 text-4xl w-full lg:w-3/4 m-auto;
 }
 
 .logo {
-  @apply text-3xl font-semibold ml-6;
+  @apply text-3xl font-semibold ml-6 text-white lg:text-black;
 
   a {
-    color: $gray-dark;
+    @apply text-white lg:text-black;
   }
 
   a:active {
-    color: $gray;
+    @apply text-white lg:text-black;
   }
 
   span {
@@ -27,7 +27,7 @@
 }
 
 .list {
-  @apply flex space-x-8 mr-6;
+  @apply hidden md:flex space-x-8 mr-6;
 
   li {
     color: black;
