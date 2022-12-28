@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+
+.navbar {
+  font-family: $primary-font;
+  border: 1px solid gray;
+  @apply flex justify-between items-center h-20 text-4xl text-emerald-800 w-3/4 m-auto;
+}
+
+.logo {
+  @apply text-3xl font-semibold ml-6;
+
+  a {
+    color: $gray-dark;
+  }
+
+  a:active {
+    color: $gray;
+  }
+
+  span {
+    font-weight: 900;
+    color: $yellow;
+  }
+}
+
+.navigation {
+}
+
+.list {
+  @apply flex space-x-8 mr-6;
+
+  li {
+    color: black;
+    list-style: none;
+    @apply text-base;
+
+    //activated te değişir
+  }
+}
