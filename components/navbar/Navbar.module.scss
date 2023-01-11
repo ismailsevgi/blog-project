@@ -3,7 +3,7 @@
 .navbar {
   font-family: $primary-font;
 
-  @apply bg-black lg:bg-white flex justify-between items-center h-20 text-4xl w-full lg:w-3/4 m-auto;
+  @apply bg-black lg:bg-white flex justify-between items-center h-20 text-4xl m-auto;
 }
 
 .logo {

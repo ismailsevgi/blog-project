@@ -4,7 +4,6 @@ import styles from './Navbar.module.scss';
 
 function Navbar() {
   const navbarRef = React.useRef<HTMLDivElement>(null);
-  console.log(navbarRef?.current?.classList);
 
   function openNavbar() {
     //navbar margin bottom transition
@@ -18,7 +17,7 @@ function Navbar() {
   return (
     <div
       ref={navbarRef}
-      className='w-full mb-[-9rem] lg:mb-[-9rem] ease-in duration-300'
+      className='max-w-screen-xl m-auto mb-[-9rem] lg:mb-[-9rem] ease-in duration-300'
     >
       <div className={styles.navbar}>
         <div className={styles.logo}>

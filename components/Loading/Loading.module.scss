@@ -1,0 +1,12 @@
+.Wrapper {
+  height: 100vh;
+  border: 1px solid black;
+  position: relative;
+}
+
+.CatGif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

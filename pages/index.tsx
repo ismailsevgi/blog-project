@@ -1,8 +1,26 @@
 import Head from 'next/head';
 import Featured from '../components/featured/Featured';
 import Navbar from '../components/navbar/Navbar';
+import RecentBlogs from '../components/RecentBlogs/RecentBlogs';
 
-export default function Home() {
+import Blogs from '../components/blogs/Blogs';
+import usePagination from '../utils/usePagination';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Loading from '../components/Loading/Loading';
+
+const Home: React.FC = () => {
+  const {
+    isReachedEnd,
+    flattedData,
+    data,
+    error,
+    isLoading,
+    isValidating,
+    mutate,
+    size,
+    setSize,
+  } = usePagination();
+
   return (
     <>
       <Head>
@@ -13,11 +31,33 @@ export default function Home() {
       </Head>
       <main>
         {/* Navbar */}
-        <Navbar />
-        <Featured />
+
+        {isLoading && <Loading />}
         {/* Featured Posts */}
-        {/* Recent Blogs */}
+        {data && (
+          <>
+            <Navbar />
+            <Featured lastBlog={flattedData[0]} />
+            {/* Recent Blogs */}
+            <RecentBlogs otherBlogs={flattedData.slice(1, 6)} />
+            {/* About Me */}
+            <InfiniteScroll
+              next={() => setSize(size + 1)}
+              hasMore={!isReachedEnd}
+              loader={<p>Loading</p>}
+              endMessage={<p>Reached to the end</p>}
+              dataLength={flattedData?.length}
+            >
+              <Blogs blogs={flattedData.slice(6)} />
+            </InfiniteScroll>
+          </>
+        )}
+        {/* {!isReachedEnd && (
+          <button onClick={}>Load More</button>
+        )} */}
       </main>
     </>
   );
-}
+};
+
+export default Home;
