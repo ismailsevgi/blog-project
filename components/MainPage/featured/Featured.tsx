@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import React from 'react';
 
-import { Ipost, FeaturedPost } from '../../Interfaces/FeatureTypes';
+import { Ipost, FeaturedPost } from '../../../Interfaces/FeatureTypes';
 import styles from './Featured.module.scss';
 
 const Featured: React.FC<FeaturedPost> = ({ lastBlog }) => {
@@ -19,10 +20,13 @@ const Featured: React.FC<FeaturedPost> = ({ lastBlog }) => {
             {lastBlog.summary}
           </p>
           <div className='w-full h-16 flex justify-center sm:justify-end'>
-            <button className='flex justify-between items-center w-[10rem] bg-black  h-full px-6 hover:bg-orange-500 ease-in duration-150'>
-              <span className=' text-white'>Read More</span>
+            <Link
+              href={`/Blog/${lastBlog._id}`}
+              className='flex justify-between items-center w-[10rem] bg-black  h-full px-6 hover:bg-orange-500 ease-in duration-150'
+            >
+              <span className='text-white'>Read More</span>
               <i className='fa-solid fa-arrow-right text-sm  text-white pl-2'></i>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

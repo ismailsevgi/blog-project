@@ -1,27 +1,54 @@
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import useWindowSize from '../../utils/useWindowSize';
 import styles from './Navbar.module.scss';
 
 function Navbar() {
-  const navbarRef = React.useRef<HTMLDivElement>(null);
+  const [navbarHeightState, setNavbarHeightState] = useState<Boolean>(false);
+  const parentRef = React.useRef<HTMLDivElement>(null);
+  const currentSize = useWindowSize();
+  console.log('currentSize: ', currentSize);
 
+  if (currentSize[0] > 1024) {
+    if (parentRef?.current && navbarHeightState) {
+      setNavbarHeightState(false);
+      parentRef?.current!.animate([{ height: '14rem' }, { height: '5rem' }], {
+        duration: 300,
+        easing: 'ease-in-out',
+        fill: 'forwards',
+      });
+    }
+  }
+
+  //this function is for opening and closing navbar
   function openNavbar() {
-    //navbar margin bottom transition
-    if (navbarRef?.current?.classList.contains('mb-[-9rem]')) {
-      navbarRef?.current?.classList.remove('mb-[-9rem]');
-    } else {
-      navbarRef?.current?.classList.add('mb-[-9rem]');
+    if (parentRef?.current && !navbarHeightState) {
+      console.log('1');
+      setNavbarHeightState(true);
+
+      parentRef?.current.animate([{ height: '5rem' }, { height: '14rem' }], {
+        duration: 300,
+        easing: 'ease-in-out',
+        fill: 'forwards',
+      });
+    } else if (parentRef?.current && navbarHeightState) {
+      setNavbarHeightState(false);
+      parentRef?.current!.animate([{ height: '14rem' }, { height: '5rem' }], {
+        duration: 300,
+        easing: 'ease-in-out',
+        fill: 'forwards',
+      });
     }
   }
 
   return (
     <div
-      ref={navbarRef}
-      className='max-w-screen-xl m-auto mb-[-9rem] lg:mb-[-9rem] ease-in duration-300'
+      ref={parentRef}
+      className='max-w-screen-xl m-auto relative lg:h-[100px]'
     >
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <Link href={'/'}>Academik Örgücü</Link>
+          <Link href={'/'}>Akademik Örgücü</Link>
           <span>.</span>
         </div>
         <div className={styles.navigation}>
@@ -47,7 +74,7 @@ function Navbar() {
           <i className='text-2xl text-black fa-solid fa-bars '></i>
         </div>
       </div>
-      <div className='h-36 bg-black mx-auto flex w-full lg:w-3/4'>
+      <div className='h-36 lg:hidden bottom-0 z-[-1] ease-out duration-1000 absolute opacity-1  bg-black mx-auto w-full lg:w-3/4'>
         <ul className='h-full flex flex-col justify-center items-start pl-4 text-white '>
           <li>
             <Link href={'/'}>Ana Sayfa</Link>

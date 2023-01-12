@@ -17,9 +17,11 @@ if (!cached) {
 const connectingMongoDB = async () => {
   if (cached.conn) {
     return cached.conn;
+    console.log('cached.conn 20');
   }
 
   if (!cached.promise) {
+    console.log('!cached.promise 24');
     const mongoOptions = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -28,6 +30,7 @@ const connectingMongoDB = async () => {
     cached.promise = mongoose
       .connect(MONGODB_URI, mongoOptions)
       .then((mongoose) => {
+        console.log('.connect 33');
         return mongoose;
       });
   }

@@ -8,6 +8,9 @@ export interface Ipost {
   date: string;
   imgUrl: string;
   category: 'Gündelik' | 'Örgü' | 'Kültür';
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
 
 export type FeaturedPost = {
