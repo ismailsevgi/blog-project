@@ -1,11 +1,16 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
 import React from 'react';
-import axios from 'axios';
+
 import { Ipost } from '../../Interfaces/FeatureTypes';
 import Navbar from '../../components/navbar/Navbar';
 
+import connectingMongoDB from '../../utils/connectMongo.js';
+import BlogsModel from '../../utils/blogSchema';
+
 export const getStaticPaths = async () => {
-  const { data } = await axios.get('http://localhost:3000/api/getBlogs');
+  await connectingMongoDB();
+
+  const data = await BlogsModel.find({});
+
   const pathsArr = data.map((blog: { _id: string }) => ({
     params: { blogId: blog._id.toString() },
   }));
@@ -16,51 +21,96 @@ export const getStaticPaths = async () => {
   };
 };
 
+type Props = {
+  blog: Ipost;
+};
+
 export const getStaticProps = async (context: {
   params: { blogId: string };
 }) => {
-  const { data } = await axios.get(
-    `http://localhost:3000/api/getBlog?blogId=${context.params.blogId}`
-  );
+  await connectingMongoDB();
+
+  const data = await BlogsModel.findOne({
+    _id: context.params.blogId,
+  });
+
+  console.log('getStaticProps', typeof data);
 
   return {
     props: {
-      data,
+      blog: JSON.parse(JSON.stringify(data)),
     },
   };
 };
 
-type Props = {
-  data: Ipost[];
-};
+const Blog: React.FC<Props> = ({ blog }) => {
+  console.log('data', blog);
 
-const Blog: React.FC<Props> = ({ data }) => {
   return (
     <>
       <Navbar />
-      <div key={data[0]._id}>
+      <div key={blog._id}>
         {/* Top */}
         <div className='font-Poppins text-center h-auto  '>
-          <div className='text-slate-400 text-xl mt-8'>{data[0].date}</div>
+          <div className='text-slate-400 text-xl mt-8'>{blog.date}</div>
           <div className='title text-5xl font-semibold text-black my-4'>
-            {data[0].title}
+            {blog.title}
           </div>
-          <div className='text-2xl text-orange-500 mb-4'>
-            {data[0].category}
-          </div>
+          <div className='text-2xl text-orange-500 mb-4'>{blog.category}</div>
         </div>
         {/* Image */}
-        <div className='w-full md:w-2/3 mx-auto my-12 shrink-0 p-2 md:p-0'>
-          <img src={data[0].imgUrl} />
-        </div>
-        {/* Kısa özet */}
-        <div className='mx-auto w-full md:w-2/3 p-4 md:p-0'>
-          <p className='leading-9'>
+        <div className='w-full md:w-2/3 mx-auto my-12 shrink-0'>
+          <img
+            src={blog.imgUrl}
+            alt={blog.title}
+            className='float-none lg:float-left w-full hover:w-full hover:mx-0   lg:w-[30rem] px-3 mt-4 lg:px-2'
+          />
+          <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
+          <p className='text-lg break-keep text-black leading-9 float-none lg:float-both pt-2 mx-3 lg:mx-2'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
             sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui!
+            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
+            esse exercitationem ut ipsum sunt impedit temporibus est sit,
+            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
+            sunt impedit temporibus est sit, officia dignissimos optio ab,
+            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
+            esse exercitationem ut ipsum sunt impedit temporibus est sit,
+            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
+            sunt impedit temporibus est sit, officia dignissimos optio ab,
+            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
+            esse exercitationem ut ipsum sunt impedit temporibus est sit,
+            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
+            sunt impedit temporibus est sit, officia dignissimos optio ab,
+            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
+            esse exercitationem ut ipsum sunt impedit temporibus est sit,
+            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
+            sunt impedit temporibus est sit, officia dignissimos optio ab,
+            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
+            esse exercitationem ut ipsum sunt impedit temporibus est sit,
+            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
+            sunt impedit temporibus est sit, officia dignissimos optio ab,
+            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
+            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
+            esse exercitationem ut ipsum sunt impedit temporibus est sit,
+            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
           </p>
+          <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
         </div>
       </div>
     </>

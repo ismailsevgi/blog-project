@@ -15,5 +15,12 @@
         }
       ]
     }
-  ]
+  ],
+
+  "build": {
+    "env": {
+      "MONGODB_URI": "mongodb+srv://seymaBlogAcc:123iso123@nodetuts.qlencyn.mongodb.net/seymaBlogDatabase?retryWrites=true&w=majority",
+      "API_KEY": "BAIbNoGiKNreFdqc4DRJSgB9Vcw7kKJJsv1yN9u4KnFnJ2kyLl2wm5IAQfiDP2iS"
+    }
+  }
 }
