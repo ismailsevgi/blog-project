@@ -29,16 +29,17 @@ const baseOne = 'https://blog-project-ebon-two.vercel.app';
 const assetPrefix = isProd ? baseOne : 'http://localhost:3000';
 
 export const fetchingDatas = (resource: any) => {
-  return fetch(`${assetPrefix}${resource}`, {
-    credentials: 'include',
-    mode: 'cors',
-  })
+  return fetch(`${assetPrefix}${resource}`)
     .then((res) => {
+      // {
+      //   credentials: 'include',
+      //   mode: 'cors',
+      // }
       console.log('Response geldi');
 
       return res.json();
     })
-    .catch((err) => {
-      console.log('ERR geldi', err);
+    .catch((error) => {
+      console.log('(customFuns.ts/fetchingDatas) Fetching error:', error);
     });
 };

@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-
+export { reportWebVitals } from 'next-axiom';
 import { SWRConfig } from 'swr';
 import { fetchingDatas } from '../utils/customFuns';
 import { SessionProvider } from 'next-auth/react';

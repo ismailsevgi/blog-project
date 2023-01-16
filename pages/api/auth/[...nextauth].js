@@ -1,20 +1,15 @@
 import NextAuth from 'next-auth';
 
-import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import connectingMongoDB from '../../../utils/connectMongo';
 import User from '../../../utils/models/userSchema';
 
 export default NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
     CredentialsProvider({
       name: 'Credentials',
       async authorize(credentials, req) {
-        console.log('Request to auth: ', req);
+        console.log('req.body.csrfToken: ', req.body.csrfToken);
         console.log('credentials: ', credentials);
 
         await connectingMongoDB().catch((err) => {
@@ -33,6 +28,7 @@ export default NextAuth({
         return {
           _id: result._id,
           username: result.username,
+          role: result.role,
         };
       },
     }),
@@ -43,8 +39,11 @@ export default NextAuth({
   session: {
     jwt: true,
   },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token, user }) {
       session.user = token.user;
       return session;
     },
@@ -52,6 +51,7 @@ export default NextAuth({
       if (user) {
         token.user = user;
       }
+
       return token;
     },
   },

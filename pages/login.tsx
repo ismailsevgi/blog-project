@@ -13,12 +13,15 @@ function Login({ loginStatus }: Props) {
   const { data: session } = useSession();
   console.log('session: ', session);
 
-  const sendLoginCredentials = async (values: {
-    username: string;
-    password: string;
-  }) => {
+  const sendLoginCredentials = async (
+    values: {
+      username: string;
+      password: string;
+    },
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     console.log('sendLoginCredentials : ', values.username, values.password);
-
+    e.preventDefault();
     await signIn('credentials', {
       username: values.username,
       password: values.password,
@@ -30,7 +33,7 @@ function Login({ loginStatus }: Props) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    sendLoginCredentials({ username, password });
+    sendLoginCredentials({ username, password }, e);
   };
 
   return (
