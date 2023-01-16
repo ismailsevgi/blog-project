@@ -1,5 +1,5 @@
 import connectingMongoDB from '../../utils/connectMongo';
-import Blogs from '../../utils/blogSchema';
+import Blogs from '../../utils/models/blogSchema';
 import Cors from 'cors';
 
 const cors = Cors({

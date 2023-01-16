@@ -4,7 +4,7 @@ import { Ipost } from '../../Interfaces/FeatureTypes';
 import Navbar from '../../components/navbar/Navbar';
 
 import connectingMongoDB from '../../utils/connectMongo.js';
-import BlogsModel from '../../utils/blogSchema';
+import BlogsModel from '../../utils/models/blogSchema';
 
 export const getStaticPaths = async () => {
   await connectingMongoDB();
@@ -34,8 +34,6 @@ export const getStaticProps = async (context: {
     _id: context.params.blogId,
   });
 
-  console.log('getStaticProps', typeof data);
-
   return {
     props: {
       blog: JSON.parse(JSON.stringify(data)),
@@ -44,8 +42,6 @@ export const getStaticProps = async (context: {
 };
 
 const Blog: React.FC<Props> = ({ blog }) => {
-  console.log('data', blog);
-
   return (
     <>
       <Navbar />

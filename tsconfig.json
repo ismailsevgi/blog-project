@@ -14,6 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true
+    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.tsx", "pages/index.tsx", "pages/api/getBlogs.js", "pages/api/getBlogs.js"],
   "exclude": ["node_modules"]

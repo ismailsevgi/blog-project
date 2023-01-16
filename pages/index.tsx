@@ -8,8 +8,11 @@ import usePagination from '../utils/usePagination';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loading from '../components/Loading/Loading';
 import Spinner from '../components/spinner/Spinner';
-
+import { useSession, signIn, signOut } from 'next-auth/react';
 const Home: React.FC = () => {
+  const { data: session } = useSession();
+  console.log(session);
+
   const {
     isReachedEnd,
     flattedData,
