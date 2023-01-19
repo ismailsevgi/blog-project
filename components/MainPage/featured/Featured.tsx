@@ -19,7 +19,7 @@ const Featured: React.FC<FeaturedPost> = ({ lastBlog }) => {
           <h1 className={styles.title}>{lastBlog.title}</h1>
 
           <p className='text-lg font-extralight  break-all'>
-            {lastBlog.summary}
+            {lastBlog.post.slice(0, 55) + '...'}
           </p>
           <div className='w-full h-16 flex justify-center sm:justify-end'>
             <Link

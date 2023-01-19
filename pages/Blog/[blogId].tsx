@@ -63,48 +63,7 @@ const Blog: React.FC<Props> = ({ blog }) => {
           />
           <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
           <p className='text-lg break-keep text-black leading-9 float-none lg:float-both pt-2 mx-3 lg:mx-2'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
-            sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
-            esse exercitationem ut ipsum sunt impedit temporibus est sit,
-            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
-            sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
-            esse exercitationem ut ipsum sunt impedit temporibus est sit,
-            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
-            sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
-            esse exercitationem ut ipsum sunt impedit temporibus est sit,
-            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
-            sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
-            esse exercitationem ut ipsum sunt impedit temporibus est sit,
-            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
-            sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
-            esse exercitationem ut ipsum sunt impedit temporibus est sit,
-            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consectetur repellendus eius, nostrum esse exercitationem ut ipsum
-            sunt impedit temporibus est sit, officia dignissimos optio ab,
-            inventore quisquam commodi dolore qui! Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Consectetur repellendus eius, nostrum
-            esse exercitationem ut ipsum sunt impedit temporibus est sit,
-            officia dignissimos optio ab, inventore quisquam commodi dolore qui!
+            {blog.post}
           </p>
           <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
         </div>

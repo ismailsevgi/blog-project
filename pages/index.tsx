@@ -35,7 +35,12 @@ const Home: React.FC = () => {
           name='description'
           content='Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages'
         ></meta>
-        <link rel='icon' href='/favicon.ico' />
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/images/favicon.png'
+        />
       </Head>
       <main>
         {/* Navbar */}
