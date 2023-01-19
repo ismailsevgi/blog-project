@@ -6,7 +6,7 @@ const cors = Cors({
   methods: ['POST', 'GET', 'HEAD'],
 });
 
-function runMiddleware(req, res, fn) {
+function runCors(req, res, fn) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result) => {
       if (result instanceof Error) {
@@ -22,7 +22,7 @@ export default async function get_Blogs(request, response) {
   console.log('request.query.limit: ', request.query.limit);
   console.log('request.query: ', request.query);
 
-  await runMiddleware(request, response, cors);
+  await runCors(request, response, cors);
 
   await connectingMongoDB();
 

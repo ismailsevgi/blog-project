@@ -5,6 +5,8 @@ import { Ipost, FeaturedPost } from '../../../Interfaces/FeatureTypes';
 import styles from './Featured.module.scss';
 
 const Featured: React.FC<FeaturedPost> = ({ lastBlog }) => {
+  console.log('lastBlog: ', lastBlog);
+
   return (
     <div className='max-w-screen-xl mx-auto h-[80vh] relative'>
       <div className='h-full w-full flex '>
@@ -24,7 +26,7 @@ const Featured: React.FC<FeaturedPost> = ({ lastBlog }) => {
               href={`/Blog/${lastBlog._id}`}
               className='flex justify-between items-center w-[10rem] bg-black  h-full px-6 hover:bg-orange-500 ease-in duration-150'
             >
-              <span className='text-white'>Read More</span>
+              <span className='text-white'>DEVAMI</span>
               <i className='fa-solid fa-arrow-right text-sm  text-white pl-2'></i>
             </Link>
           </div>

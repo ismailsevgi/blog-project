@@ -2,12 +2,13 @@ import mongoose from 'mongoose';
 
 const blogSchema = new mongoose.Schema(
   {
-    title: String,
-    summary: String,
-    post: String,
-    date: String,
-    imgUrl: String,
-    category: String,
+    title: { type: String, required: true },
+    summary: { type: String, required: false },
+    post: { type: String, required: true },
+    date: { type: String, required: false },
+    imgUrl: { type: String, required: true },
+    category: { type: String, required: true },
+    otherImages: { type: Array, required: false },
   },
   {
     timestamps: true,
