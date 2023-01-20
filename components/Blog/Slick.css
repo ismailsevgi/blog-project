@@ -1,0 +1,36 @@
+.button__bar {
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+
+  text-align: center;
+}
+
+.button__bar li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 3px;
+  padding: 0;
+}
+
+.button__bar li button {
+  border: none;
+  background: white;
+  border: 1px solid gray;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  height: 12.5px;
+  width: 12.5px;
+  border-radius: 5px;
+}
+
+.button__bar li.slick-active button {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  background-color: #f59e0b;
+}

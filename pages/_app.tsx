@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-
+import '../components/Blog/Slick.css';
 export { reportWebVitals } from 'next-axiom';
 import { SWRConfig } from 'swr';
 import { fetchingDatas } from '../utils/customFuns';
