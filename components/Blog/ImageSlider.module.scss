@@ -1,0 +1,8 @@
+.ImageSlider {
+  @apply w-full lg:w-3/4 mx-auto mt-24 rounded-lg border-2 p-2 border-yellow-500;
+}
+
+.img {
+  object-fit: contain !important;
+  height: 35rem !important;
+}

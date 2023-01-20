@@ -8,7 +8,7 @@ export interface Ipost {
   post: string;
   date: string;
   imgUrl: string;
-  otherImages?: string[];
+  otherImages?: [{ imgId: string; imgUrl: string }] | [];
   category: 'Gündelik' | 'Örgü' | 'Kültür';
   createdAt: string;
   updatedAt: string;
@@ -47,15 +47,18 @@ export type Action =
   | { type: 'SET_TITLE'; payload: string }
   | { type: 'SET_CATEGORY'; payload: 'Gündelik' | 'Örgü' | 'Kültür' }
   | { type: 'SET_POST'; payload: string }
-  | { type: 'SET_IMGURL'; payload: null | File | string }
-  | { type: 'SET_OTHER_IMAGES'; payload: null | FileList | string[] };
+  | { type: 'SET_IMGURL'; payload: null | string }
+  | {
+      type: 'SET_OTHER_IMAGES';
+      payload: null | any[];
+    };
 
 export type postState = {
   title: string;
   category: 'Gündelik' | 'Örgü' | 'Kültür';
   post: string;
-  imgUrl: null | File | string;
-  otherImages: null | FileList | string[];
+  imgUrl: null | string;
+  otherImages: null | string[];
 };
 
 export type categoryOptionSelectType = React.ChangeEvent<HTMLSelectElement> & {

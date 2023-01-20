@@ -27,12 +27,12 @@ export default async function uploadToS3(
     }
   );
 
-  const otherImagesUrl: Promise<string[]> = new Promise(
+  const otherImagesUrl: Promise<any[]> = new Promise(
     async (resolve, reject) => {
       try {
         let counter = 0;
         let totalArr = [];
-        if (otherImages) {
+        if (otherImages && otherImages.length > 0) {
           for (const file of otherImages) {
             const response = await axios.put(otherUrls[counter], file, {
               headers: {
@@ -44,7 +44,10 @@ export default async function uploadToS3(
 
             const match = urlRegex.exec(response.request.responseURL);
 
-            totalArr.push(match![1]);
+            totalArr.push({
+              imgId: crypto.randomUUID(),
+              imgUrl: match![1],
+            });
           }
         }
 

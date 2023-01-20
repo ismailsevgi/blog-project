@@ -5,6 +5,9 @@ import Navbar from '../../components/navbar/Navbar';
 
 import connectingMongoDB from '../../utils/connectMongo.js';
 import BlogsModel from '../../utils/models/blogSchema';
+import ImageSlider from '../../components/Blog/ImageSlider';
+
+import styles from './BlogId.module.scss';
 
 export const getStaticPaths = async () => {
   await connectingMongoDB();
@@ -42,10 +45,12 @@ export const getStaticProps = async (context: {
 };
 
 const Blog: React.FC<Props> = ({ blog }) => {
+  console.log('Blog: ', blog);
+
   return (
-    <>
+    <div>
       <Navbar />
-      <div key={blog._id}>
+      <div className={styles.wrapper} key={blog._id}>
         {/* Top */}
         <div className='font-Poppins text-center h-auto  '>
           <div className='text-slate-400 text-xl mt-8'>{blog.date}</div>
@@ -55,7 +60,7 @@ const Blog: React.FC<Props> = ({ blog }) => {
           <div className='text-2xl text-orange-500 mb-4'>{blog.category}</div>
         </div>
         {/* Image */}
-        <div className='w-full md:w-2/3 mx-auto my-12 shrink-0'>
+        <div className='w-full lg:w-3/4 mx-auto my-12 shrink-0'>
           <img
             src={blog.imgUrl}
             alt={blog.title}
@@ -68,7 +73,10 @@ const Blog: React.FC<Props> = ({ blog }) => {
           <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
         </div>
       </div>
-    </>
+      {blog.otherImages && blog.otherImages?.length > 0 && (
+        <ImageSlider otherImages={blog.otherImages} />
+      )}
+    </div>
   );
 };
 
