@@ -24,7 +24,7 @@ const Blogs: React.FC<BlogsData> = ({ blogs }) => {
               </div>
               {/* Image */}
               <div className='w-full md:w-2/3 mx-auto my-12 shrink-0 p-2 md:p-0'>
-                <img src={blog.imgUrl} />
+                <img src={blog.imgUrl} className='object-contain mx-auto' />
               </div>
               {/* Kısa özet */}
               <div className='mx-auto w-full md:w-2/3 p-4 md:p-0'>
