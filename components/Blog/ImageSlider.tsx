@@ -25,7 +25,6 @@ function ImageSlider({ otherImages }: Props) {
     slidesToShow: 1,
     slidesToScroll: 1,
     dotsClass: 'button__bar',
-    arrows: false,
   };
 
   return (

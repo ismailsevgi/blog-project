@@ -64,7 +64,7 @@ const Blog: React.FC<Props> = ({ blog }) => {
           <img
             src={blog.imgUrl}
             alt={blog.title}
-            className='float-none lg:float-left w-full hover:w-full hover:mx-0   lg:w-[30rem] px-3 mt-4 lg:px-2'
+            className='float-none lg:float-left w-full hover:mx-0   lg:w-[40rem] px-3 mt-4 lg:px-2'
           />
           <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
           <p className='text-lg break-keep text-black leading-9 float-none lg:float-both pt-2 mx-3 lg:mx-2'>

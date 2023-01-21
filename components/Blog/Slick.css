@@ -24,13 +24,77 @@
   color: transparent;
   cursor: pointer;
   display: block;
-  height: 12.5px;
-  width: 12.5px;
-  border-radius: 5px;
+  height: 15px;
+  width: 15px;
 }
 
 .button__bar li.slick-active button {
   margin-top: 1rem;
   margin-bottom: 2rem;
   background-color: #f59e0b;
+}
+
+.slick-prev::before {
+  color: #f59e0b !important;
+  font-size: 50px !important;
+}
+
+.slick-next::before {
+  color: #f59e0b !important;
+
+  font-size: 50px !important;
+}
+
+.slick-prev {
+  z-index: 1;
+  left: 5% !important;
+}
+
+.slick-next {
+  z-index: 1;
+  right: 5% !important;
+}
+
+@media only screen and (max-width: 1044px) {
+  .slick-prev {
+    top: 36rem !important;
+    left: 11% !important;
+  }
+  .slick-next {
+    top: 36rem !important;
+    right: 19% !important;
+  }
+}
+
+@media only screen and (max-width: 486px) {
+  .slick-prev {
+    top: 36rem !important;
+    left: 5% !important;
+  }
+  .slick-next {
+    top: 36rem !important;
+    right: calc(5% + 2rem) !important;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .slick-prev {
+    top: 36.5rem !important;
+    left: 1% !important;
+  }
+  .slick-next {
+    top: 36.5rem !important;
+    right: calc(1% + 0.5rem) !important;
+  }
+
+  .slick-prev::before {
+    color: #f59e0b !important;
+    font-size: 25px !important;
+  }
+
+  .slick-next::before {
+    color: #f59e0b !important;
+
+    font-size: 25px !important;
+  }
 }
