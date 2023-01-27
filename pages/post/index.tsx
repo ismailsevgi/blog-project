@@ -9,9 +9,15 @@ import uploadToS3 from '../../components/Post/uploadToS3';
 import initialState from '../../utils/Reducer/blogState';
 import { useRouter } from 'next/router';
 
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
+import 'react-quill/dist/quill.snow.css';
+
 const BlogCreate = () => {
   const [titleImage, setTitleImage] = useState<null | File>(null);
   const [otherImages, setOtherImages] = useState<null | FileList>(null);
+
   const [upload, setUpload] = useState(false);
   const [state, dispatch] = useReducer(postReducer, initialState);
   const router = useRouter();
@@ -79,15 +85,15 @@ const BlogCreate = () => {
         </select>
 
         <label className='block font-medium mb-2 mt-4'>Post</label>
-        <textarea
-          className='bg-gray-200 rounded-lg p-2 w-full'
+        <ReactQuill
           value={state.post}
           onChange={(e) => {
             console.log('Key stroke');
 
-            dispatch({ type: Constants.SET_POST, payload: e.target.value });
+            dispatch({ type: Constants.SET_POST, payload: e });
           }}
         />
+
         <label className='block font-medium mb-2'>Title Image</label>
         <input
           type='file'

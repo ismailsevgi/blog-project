@@ -9,6 +9,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Loading from '../components/Loading/Loading';
 import Spinner from '../components/spinner/Spinner';
 import { useSession, signIn, signOut } from 'next-auth/react';
+
 const Home: React.FC = () => {
   const { data: session } = useSession();
   console.log(session);
@@ -31,9 +32,10 @@ const Home: React.FC = () => {
         <title>Akademik Örgücü</title>
 
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='author' content='Şeyma Sevgi'></meta>
         <meta
           name='description'
-          content='Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages'
+          content='Merhaba ben şeyma sevgi, bloğumda gündelik, kültür ve hobilerimden bahsediyorum'
         ></meta>
         <link
           rel='icon'

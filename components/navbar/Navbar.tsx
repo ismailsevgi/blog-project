@@ -53,11 +53,11 @@ function Navbar() {
       className='max-w-screen-xl m-auto relative lg:h-[100px]'
     >
       <div className={styles.navbar}>
-        <div className={styles.logo}>
+        <header className={styles.logo}>
           <Link href={'/'}>Akademik Örgücü</Link>
           <span>.</span>
-        </div>
-        <div className={styles.navigation}>
+        </header>
+        <nav className={styles.navigation}>
           <ul className={styles.list}>
             <li>
               <Link href={'/'}>Ana Sayfa</Link>
@@ -78,7 +78,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
         <div
           onClick={openNavbar}
           className='h-12 bg-white w-12 mr-6 flex lg:hidden justify-center items-center'
@@ -86,7 +86,7 @@ function Navbar() {
           <i className='text-2xl text-black fa-solid fa-bars '></i>
         </div>
       </div>
-      <div
+      <nav
         ref={childRef}
         className='h-36 lg:hidden bottom-0 z-[-1] ease-out duration-1000 absolute opacity-1  bg-black mx-auto w-full lg:w-3/4'
       >
@@ -110,7 +110,7 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-      </div>
+      </nav>
     </div>
   );
 }

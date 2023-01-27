@@ -1,5 +1,5 @@
 import React from 'react';
-
+import parse from 'html-react-parser';
 import { Ipost } from '../../Interfaces/FeatureTypes';
 import Navbar from '../../components/navbar/Navbar';
 
@@ -9,26 +9,26 @@ import ImageSlider from '../../components/Blog/ImageSlider';
 
 import styles from './BlogId.module.scss';
 
-export const getStaticPaths = async () => {
-  await connectingMongoDB();
+// export const getStaticPaths = async () => {
+//   await connectingMongoDB();
 
-  const data = await BlogsModel.find({});
+//   const data = await BlogsModel.find({});
 
-  const pathsArr = data.map((blog: { _id: string }) => ({
-    params: { blogId: blog._id.toString() },
-  }));
+//   const pathsArr = data.map((blog: { _id: string }) => ({
+//     params: { blogId: blog._id.toString() },
+//   }));
 
-  return {
-    paths: pathsArr,
-    fallback: false,
-  };
-};
+//   return {
+//     paths: pathsArr,
+//     fallback: false,
+//   };
+// };
 
 type Props = {
   blog: Ipost;
 };
 
-export const getStaticProps = async (context: {
+export const getServerSideProps = async (context: {
   params: { blogId: string };
 }) => {
   await connectingMongoDB();
@@ -60,7 +60,7 @@ const Blog: React.FC<Props> = ({ blog }) => {
           <div className='text-2xl text-orange-500 mb-4'>{blog.category}</div>
         </div>
         {/* Image */}
-        <div className='w-full lg:w-3/4 mx-auto my-12 shrink-0'>
+        <article className='w-full lg:w-3/4 mx-auto my-12 shrink-0'>
           <img
             src={blog.imgUrl}
             alt={blog.title}
@@ -68,10 +68,10 @@ const Blog: React.FC<Props> = ({ blog }) => {
           />
           <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
           <p className='text-lg break-keep text-black leading-9 float-none lg:float-both pt-2 mx-3 lg:mx-2'>
-            {blog.post}
+            {parse(blog.post)}
           </p>
           <hr className='block mt-4 border border-1 border-yellow-500 mx-2 lg:hidden '></hr>
-        </div>
+        </article>
       </div>
       {blog.otherImages && blog.otherImages?.length > 0 && (
         <ImageSlider otherImages={blog.otherImages} />

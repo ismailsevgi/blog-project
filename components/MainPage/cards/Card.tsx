@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { Card } from '../../../Interfaces/FeatureTypes';
+import parse from 'html-react-parser';
 
 const Card: React.FC<Card> = ({ props }) => {
   const router = useRouter();
@@ -25,12 +26,7 @@ const Card: React.FC<Card> = ({ props }) => {
         <h2 className='text-2xl font-Poppins font-semibold text-gray-700 my-2'>
           {props.title}
         </h2>
-        <p>
-          {'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum'.slice(
-            0,
-            80
-          )}
-        </p>
+        <p>{parse(props.post.slice(0, 100) + '...')}</p>
       </div>
     </div>
   );

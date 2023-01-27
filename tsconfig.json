@@ -16,6 +16,6 @@
     "incremental": true
     
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.tsx", "pages/index.tsx", "pages/api/getBlogs.js", "pages/api/getBlogs.js", "middleware.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.tsx", "pages/index.tsx", "pages/api/getBlogs.js", "pages/api/getBlogs.js", "middleware.js", "pages/post/index.js", "pages/post/index.js"],
   "exclude": ["node_modules"]
 }
